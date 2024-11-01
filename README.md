@@ -2,6 +2,8 @@
 
 A self-hosted web application that demonstrates speed monitoring capabilities using maps. This is a proof-of-concept project meant for **educational purposes only**.
 
+<img src="https://github.com/user-attachments/assets/941248d2-ace0-4b61-9dd8-cbdf130b4d78" width="30%">
+
 ## Legal Disclaimer
 
 THIS SOFTWARE IS PROVIDED FOR EDUCATIONAL AND ENTERTAINMENT PURPOSES ONLY.
