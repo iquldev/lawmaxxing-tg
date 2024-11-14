@@ -62,7 +62,7 @@
 	let currentSpeed = 0;
 	let averageSpeed = 0;
 	let lastPosition: { lat: number; lon: number; timestamp: number } | null = null;
-	let maxSpeedKmph = 15;
+	let maxSpeedKmph = 1;
 
 	let accessToken = 'REPLACE_ME__BUDDY';
 

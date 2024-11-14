@@ -1,13 +1,11 @@
 import { json } from '@sveltejs/kit';
-import twilio from 'twilio';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Initialize Twilio client
-const accountSid = process.env.TWILIO_ACCOUNT_SID!;
-const authToken = process.env.TWILIO_AUTH_TOKEN!;
-const client = twilio(accountSid, authToken);
+// Initialize Telegran Bot
+const telegramToken = process.env.TELEGRAM_API_TOKEN!;
+const telegramId = process.env.TELEGRAM_USER_ID!;
 
 // In-memory storage for the last sent message timestamp
 let lastMessageTimestamp: number | null = null;
@@ -24,10 +22,15 @@ export async function POST({ request }) {
   }
 
   try {
-    const message = await client.messages.create({
-      body: `An individual is currently speeding on street "${street}", coordinates: ${coordinates} at ${speed}km/h.`,
-      from: process.env.TWILIO_PHONE_NUMBER!,
-      to: process.env.RECEIVER_PHONE_NUMBER!,
+    const message = await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        chat_id: telegramId,
+        text: `An individual is currently speeding on street "${street}", coordinates: ${coordinates} at ${speed}km/h.`,
+      }),
     });
 
     // Update the last message timestamp
